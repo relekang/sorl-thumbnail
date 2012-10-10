@@ -1,6 +1,6 @@
 from sorl.thumbnail.conf import settings, defaults as default_settings
 from sorl.thumbnail.helpers import tokey, serialize
-from sorl.thumbnail.images import ImageFile
+from sorl.thumbnail.images import ImageFile, DummyImageFile
 from sorl.thumbnail import default
 from sorl.thumbnail.parsers import parse_geometry
 
@@ -36,6 +36,10 @@ class ThumbnailBackend(object):
         options given. First it will try to get it from the key value store,
         secondly it will create it.
         """
+
+        if settings.THUMBNAIL_DUMMY:
+            return DummyImageFile(geometry_string)
+
         source = ImageFile(file_)
         for key, value in self.default_options.iteritems():
             options.setdefault(key, value)
