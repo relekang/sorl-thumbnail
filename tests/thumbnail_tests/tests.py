@@ -4,7 +4,7 @@ import operator
 import os
 import re
 import shutil
-from PIL import Image
+import Image
 from django.core.files.storage import default_storage
 from django.template.loader import render_to_string
 from django.test.client import Client
