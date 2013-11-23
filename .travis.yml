@@ -26,6 +26,7 @@ before_install:
   - sudo apt-get install -qq $APT
 
 install:
+  - pip install $PIP
   - pip install django==$DJANGO_VERSION
 
 script:
